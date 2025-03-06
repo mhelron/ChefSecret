@@ -93,23 +93,27 @@ a.sidebar-link:hover {
             </a>
         </li>
         <li class="sidebar-item">
-            <a href="#" class="sidebar-link">
+            <a href="{{ route('inventory.index') }}" class="sidebar-link">
                 <i class="bi bi-box-seam"></i>
                 <span>Inventory</span>
             </a>
         </li>
+        <!--
         <li class="sidebar-item">
             <a href="#" class="sidebar-link">
                 <i class="bi bi-shop"></i>
                 <span>Outlets</span>
             </a>
         </li>
+        -->
+        <!--
         <li class="sidebar-item">
             <a href="{{ route('departments.index') }}" class="sidebar-link">
                 <i class="bi bi-building"></i>
                 <span>Departments</span>
             </a>
         </li>
+                -->
         <li class="sidebar-item">
             <a href="{{ route('categories.index') }}" class="sidebar-link">
                 <i class="bi bi-folder"></i>

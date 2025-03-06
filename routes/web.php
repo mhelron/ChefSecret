@@ -10,6 +10,7 @@ use App\Http\Controllers\UserController;
 use App\Http\Controllers\CategoriesController;
 use App\Http\Controllers\DepartmentsController;
 use App\Http\Controllers\OutletsController;
+use App\Http\Controllers\InventoryController;
 
 use App\Http\Middleware\Auth;
 use App\Http\Middleware\VerifyRoles;
@@ -34,12 +35,28 @@ Route::view('/unauthorized', 'layouts.unauthorized')->name('unauthorized');
 
 // Middleware
 Route::middleware([Auth::class])->group(function () {
-    // Dashboard Route
+
+    // Verify Role
     Route::group(['middleware' => VerifyRoles::class . ':Super Admin,Admin,Manager,Staff'], function () {
+
+        // Dashboard Route
         Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard.index');
+
+        // Inventory Route
+        Route::prefix('/inventory')->group(function () {
+            Route::get('/', [InventoryController::class, 'index'])->name('inventory.index');
+            Route::get('add-inventory', [InventoryController::class, 'create'])->name('inventory.add');
+            Route::post('add-inventory', [InventoryController::class, 'store'])->name('inventory.store');
+            Route::get('edit-inventory/{id}', [InventoryController::class, 'edit'])->name('inventory.edit');
+            Route::put('update-inventory/{id}', [InventoryController::class, 'update'])->name('inventory.update');
+            Route::get('delete-inventory/{id}', [InventoryController::class, 'archive'])->name('inventory.delete');
+            Route::get('get-category-fields/{id}', [InventoryController::class, 'getCategoryFields'])->name('inventory.category.fields');
+        });
     });
 
+    // Verify Role
     Route::group(['middleware' => VerifyRoles::class . ':Super Admin,Admin'], function () {
+
         // Users Route
         Route::prefix('/users')->group(function () {
             Route::get('/', [UserController::class, 'index'])->name('users.index');
