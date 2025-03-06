@@ -82,6 +82,6 @@ class Auth
     protected function clearSessionAndRedirect($message)
     {
         Session::flush();
-        return redirect()->route('login')->with('error', $message);
+        return redirect()->route('login.index')->with('error', $message);
     }
 }
