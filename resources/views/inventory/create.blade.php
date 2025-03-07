@@ -29,6 +29,17 @@
                     <div class="card-body form-container">
                         <form action="{{ route('inventory.store') }}" method="POST">
                             @csrf
+
+                                 <!-- First Name -->
+                                 <div class="col-md-12">
+                                    <div class="form-group mb-3">
+                                        <label>Item Name<span class="text-danger"> *</span></label>
+                                        <input type="text" name="item_name" value="{{ old('item_name') }}" class="form-control" placeholder="Enter item name">
+                                        @error('item_name')
+                                            <small class="text-danger">{{ $message }}</small>
+                                        @enderror
+                                    </div>
+                                </div>
                     
 
                                 <!-- First Name -->

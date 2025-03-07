@@ -75,6 +75,7 @@ class InventoryController extends Controller
     {
         // Basic validation for the category
         $request->validate([
+            'item_name' => 'required|string',
             'category' => 'required|string',
         ]);
 
@@ -102,16 +103,21 @@ class InventoryController extends Controller
                 }
             }
             
-            // Handle file uploads if any
             if ($request->hasFile('custom_fields_files')) {
-                // Here you would process file uploads
-                // This would involve storing files somewhere and saving references
-                // For now, we'll just log that files were received
-                Log::info('Files were uploaded but not processed in this implementation');
+                foreach ($request->file('custom_fields_files') as $fieldName => $file) {
+                    Log::info('File was uploaded for field ' . $fieldName . ' but not processed in this implementation');
+                    
+                    $path = $file->store('uploads/inventory');
+                    $customFieldsData[$fieldName] = [
+                    'path' => $path,
+                    'original_name' => $file->getClientOriginalName()
+                    ];
+                }
             }
             
             // Prepare data for storage
             $inventoryData = [
+                'item_name' => $request->item_name,
                 'category' => $request->category,
                 'category_key' => $categoryKey,
                 'custom_fields' => $customFieldsData,
@@ -208,11 +214,11 @@ class InventoryController extends Controller
                     Log::info('File was uploaded for field ' . $fieldName . ' but not processed in this implementation');
                     
                     // In a real implementation, you'd store the file and update the field reference
-                    // $path = $file->store('uploads/inventory');
-                    // $customFieldsData[$fieldName] = [
-                    //     'path' => $path,
-                    //     'original_name' => $file->getClientOriginalName()
-                    // ];
+                    $path = $file->store('uploads/inventory');
+                    $customFieldsData[$fieldName] = [
+                    'path' => $path,
+                    'original_name' => $file->getClientOriginalName()
+                    ];
                 }
             }
             

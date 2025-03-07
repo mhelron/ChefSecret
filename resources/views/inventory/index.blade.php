@@ -46,6 +46,7 @@
                                 <thead>
                                     <tr>
                                         <th scope="col">#</th>
+                                        <th scope="col">Item</th>
                                         <th scope="col">Category</th>
                                         <th scope="col">Status</th>
                                         <th scope="col">Custom Fields</th>
@@ -58,6 +59,7 @@
                                     @forelse ($inventory as $key => $item)
                                     <tr>
                                         <td>{{ $i++ }}</td>
+                                        <td>{{ $item['item_name'] ?? 'N/A' }}</td>
                                         <td>{{ $item['category'] ?? 'N/A' }}</td>
                                         <td>{{ $item['status'] ?? 'N/A' }}</td>
                                         <td>
