@@ -72,7 +72,9 @@
                                     </tr>
                                     @empty
                                     <tr>
-                                        <td colspan="7">No Records Found</td>
+                                        <td colspan="6" class="text-center">
+                                            <img src="{{asset('images/NORecords.png')}}" alt="No Records Found" width="300" height="auto">
+                                        </td>
                                     </tr>
                                     @endforelse
                                 </tbody>

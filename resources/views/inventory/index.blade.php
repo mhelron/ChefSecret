@@ -115,13 +115,15 @@
                                         <td>
                                             <div class="d-flex">
                                                 <a href="{{ url('/inventory/edit-inventory/' . $key) }}" class="btn btn-sm btn-success me-2">Edit</a>
-                                                <a href="{{ url('/inventory/archive-inventory/' . $key) }}" class="btn btn-sm btn-secondary">Archive</a>
+                                                <a href="{{ url('/inventory/delete-inventory/' . $key) }}" class="btn btn-sm btn-secondary">Archive</a>
                                             </div>
                                         </td>
                                     </tr>
                                     @empty
                                     <tr>
-                                        <td colspan="5" class="text-center">No Records Found</td>
+                                        <td colspan="6" class="text-center">
+                                            <img src="{{asset('images/NORecords.png')}}" alt="No Records Found" width="300" height="auto">
+                                        </td>
                                     </tr>
                                     @endforelse
                                 </tbody>

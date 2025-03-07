@@ -1,10 +1,10 @@
 <style>
 /* Sidebar Offcanvas */
+/* Sidebar Offcanvas */
 .offcanvas {
     width: 250px;
-    background-color: #fff; /* White background */
-    color: #000;
-    border-right: 1px solid #ddd;
+    color: #fff; /* Change text to white for better contrast */
+    border-right: 1px solid #444; /* Darker border for consistency */
     display: flex;
     flex-direction: column; /* Makes content stack vertically */
     height: 100vh; /* Full height */
@@ -19,7 +19,7 @@
 /* Sidebar Links */
 a.sidebar-link {
     padding: 12px 20px;
-    color: #000;
+    color: #bbb; /* Slightly dimmed white */
     display: flex;
     align-items: center;
     font-size: 16px;
@@ -34,35 +34,36 @@ a.sidebar-link {
     margin-right: 10px;
 }
 
+/* Hover Effect */
 a.sidebar-link:hover {
-    background-color: #f1f1f1;
-    border-left: 3px solid #000;
+    background-color: rgba(255, 255, 255, 0.1); /* Subtle white overlay */
+    color: #fff; /* Ensures text stays white */
+    border-left: 3px solid #fff; /* Bootstrap primary blue */
 }
 
-/* Sidebar Footer (Logout Button at Bottom) */
+/* Sidebar Footer */
 .sidebar-footer {
-    padding: 0; /* Remove extra padding */
-    border-top: 1px solid #ddd;
-    width: 100%; /* Ensure it takes full width */
+    padding: 0;
+    border-top: 1px solid #444; /* Darker border */
+    width: 100%;
 }
 
 /* Logout Button */
 .sidebar-footer .sidebar-link {
-    color: #000;
+    color: #bbb; /* Dimmed white */
     display: flex;
     align-items: center;
-    padding: 15px 20px; /* Adjust padding for better spacing */
-    width: 100%; /* Ensure it covers the full width */
+    padding: 15px 20px;
+    width: 100%;
     text-decoration: none;
     transition: background 0.3s ease-in-out;
 }
 
-/* Hover Effect - Full Width */
+/* Sidebar Footer Hover */
 .sidebar-footer .sidebar-link:hover {
-    background-color: #f1f1f1; /* Light gray hover */
-    width: 100%;
+    background-color: rgba(255, 255, 255, 0.1);
+    color: #fff;
 }
-
 
 </style>
 
@@ -79,10 +80,10 @@ a.sidebar-link:hover {
     </ul>
 </nav>
 
-<div class="offcanvas offcanvas-start" data-bs-backdrop="static" tabindex="-1" id="staticBackdrop" aria-labelledby="staticBackdropLabel">
+<div class="offcanvas offcanvas-start bg-dark" data-bs-backdrop="static" tabindex="-1" id="staticBackdrop" aria-labelledby="staticBackdropLabel">
     <div class="offcanvas-header">
-        <h5 class="offcanvas-title" id="staticBackdropLabel">Asset Management System</h5>
-            <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+        <h5 class="offcanvas-title" id="staticBackdropLabel" style="color: fff;">Asset Management System</h5>
+        <button type="button" class="btn-close btn-close-white" data-bs-dismiss="offcanvas" aria-label="Close"></button>
     </div>
 
     <ul class="sidebar-nav">

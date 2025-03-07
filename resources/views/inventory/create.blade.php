@@ -29,9 +29,9 @@
                     <div class="card-body form-container">
                         <form action="{{ route('inventory.store') }}" method="POST">
                             @csrf
-
+                            <div class="row">
                                  <!-- First Name -->
-                                 <div class="col-md-12">
+                                 <div class="col-md-6">
                                     <div class="form-group mb-3">
                                         <label>Item Name<span class="text-danger"> *</span></label>
                                         <input type="text" name="item_name" value="{{ old('item_name') }}" class="form-control" placeholder="Enter item name">
@@ -41,22 +41,22 @@
                                     </div>
                                 </div>
                     
-
                                 <!-- First Name -->
-                                <div class="col-md-6 form-group mb-3">
-                                    <label for="categories">Category</label>
-                                    <select name="category" id="category_select" class="form-control">
-                                        <option value="" disabled selected>Select an category</option>
-                                        @foreach ($categories as $category)
-                                            <option value="{{ $category }}" {{ old('categories') == $category ? 'selected' : '' }}>{{ $category }}</option>
-                                        @endforeach
-                                    </select>
+                                <div class="col-md-6">
+                                    <div class="form-group mb-3">
+                                        <label for="categories">Category</label>
+                                        <select name="category" id="category_select" class="form-control">
+                                            <option value="" disabled selected>Select an category</option>
+                                            @foreach ($categories as $category)
+                                                <option value="{{ $category }}" {{ old('categories') == $category ? 'selected' : '' }}>{{ $category }}</option>
+                                            @endforeach
+                                        </select>
 
-                                    @if ($errors->has('categories'))
-                                    <small class="text-danger">{{ $errors->first('categories') }}</small>
-                                    @endif
+                                        @if ($errors->has('categories'))
+                                            <small class="text-danger">{{ $errors->first('categories') }}</small>
+                                        @endif
                                 </div>
-
+                            </div>
 
                                 <!-- Last Name -->
                                 <div id="dynamic-fields-container" class="mt-4">
@@ -65,7 +65,7 @@
 
                             <!-- Submit button -->
                             <div class="form-group mb-3">
-                                <button type="submit" class="btn btn-primary float-end">Add Department</button>
+                                <button type="submit" class="btn btn-primary float-end">Add </button>
                             </div>
 
                         </form>
